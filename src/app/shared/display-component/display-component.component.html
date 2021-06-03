@@ -1,0 +1,19 @@
+<div class="disp-container">
+    <div class="h4 ">Nutrition Facts <div class="h5 float-end">calories :<span class="ms-4 h5">{{data['calories']}} kcal</span></div> </div>
+    <div class="border-bottom2"></div>
+    <div class="mt-3 h6">Total weight :<span class="ms-4 h6">{{data['totalWeight']}} g</span></div> 
+    <div class="mt-3 h6" *ngIf="data['yield']">Number of servings :<span class="ms-4 h6">{{data['yield']}}</span></div> 
+    <div *ngFor="let item of data['totalNutrientsKCal']" class="mt-3">
+        <span class="h6 " >{{item[1]['label']}} :<span class="ms-4 h6">{{item[1]['quantity']}} {{item[1]['unit']}}</span></span>
+    </div>
+    <div class="row mt-3">
+        <div class="col-3 h6">Diet Type :</div>
+        <div class="col-9"> <span *ngFor="let diet of data['dietLabels']" class="badge badge-secondary mx-3">{{diet}}</span></div>
+    </div>
+    <!-- <div class="h6 mt-3">Diet Type :     <span *ngFor="let diet of data['dietLabels']" class="badge badge-secondary mx-3">{{diet}}</span></div> -->
+    <div class="row mt-3">
+        <div class="col-3 h6">Health Type :</div>
+        <div class="col-9"><span *ngFor="let diet of data['healthLabels'];let i=index" class="badge badge-secondary mx-3"> <span *ngIf="i < 8">{{diet}}</span></span></div>
+    </div>
+    <!-- <div class="h6 mt-3">Health Type :     <span *ngFor="let diet of data['healthLabels'];let i=index" class="badge badge-secondary mx-3"> <span *ngIf="i < 4">{{diet}}</span></span></div> -->
+</div>

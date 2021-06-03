@@ -1,0 +1,25 @@
+<div class="inner-container">
+    <div class="inner-container">
+        <div class="container-header">
+            Food Text Analysis
+        </div>
+        <div  class="row justify-content-center">
+            <div class="col-6">
+                  <div class="form-group mt-3">
+                    <label class="h4" for="exampleFormControlTextarea2">Ingredient's</label>
+                    <div class="py-3">Enter an ingredient list list for what you are cooking, like "1 cup rice, 10 oz chickpeas", etc.
+                        Enter each ingredient on a new line.</div>
+                    <textarea class="form-control" id="ingr-textarea" [(ngModel)]="ingr"  rows="4"></textarea>
+                  </div>
+                  <div class="text-center">
+                    <button type="button" [disabled]="!ingr" [title]='!ingr? "Enter Ingredient": ""' class="mt-3 btn btn-outline-primary" (click)='submit()'>Submit</button>
+                  </div>
+            </div>
+            <div *ngIf="analysedData" class="col-6">
+                <div class="display-result">
+                    <app-display-component [data]="analysedData" *ngIf="analysedData"></app-display-component>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

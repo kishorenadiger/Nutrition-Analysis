@@ -1,0 +1,33 @@
+<div class="inner-container">
+    <div class="container-header">
+        Full Recipe Analysis
+    </div>
+    <div *ngIf="!resultFlag" class="row justify-content-center">
+        <div class="col-8">
+            <div class="form-group mt-3">
+                <label class="h4" for="exampleFormControlTextarea1">Name of the recipe </label>
+                <div class="py-3">Enter the name of the recipe for what you are cooking, like "garlic bread", etc.</div>
+                <textarea class="form-control"  rows="2" [(ngModel)]="recipe"></textarea>
+              </div>
+              <div class="form-group mt-3">
+                <label class="h4" for="exampleFormControlTextarea2">Ingredient's</label>
+                <div class="py-3">Enter an ingredient list list for what you are cooking, like "1 cup rice, 10 oz chickpeas", etc.
+                    Enter each ingredient on a new line.</div>
+                <textarea class="form-control" id="ingr-textarea" [(ngModel)]="ingr"  rows="4"></textarea>
+                <div class="mt-3 text-danger" *ngIf="errorText">Error: {{errorText}}</div>
+              </div>
+              <div class="text-center">
+                <button type="button" [disabled]="!ingr" [title]='!ingr? "Enter Ingredient": ""' class="mt-3 btn btn-outline-primary" (click)='submit()'>Submit</button>
+                <button type="button" *ngIf="analysedData" [title]='!ingr? "Enter Ingredient": ""' class="ms-3 mt-3 btn btn-outline-primary" (click)='clear()'>Clear</button>
+              </div>
+        </div>
+    </div>
+    <div *ngIf="resultFlag" class="row">
+        <div class="col-12">
+            <img src="../../../assets/back.png" (click)="resultFlag= !resultFlag" style="height: 25px;width: 30px;cursor: pointer;" class="ms-3" alt="">
+            <div class="display-result">
+                <app-display-component [data]="analysedData" *ngIf="analysedData"></app-display-component>
+            </div>
+        </div>
+    </div>
+</div>
